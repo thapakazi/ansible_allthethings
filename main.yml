@@ -1,0 +1,9 @@
+- hosts: all
+  sudo: yes
+  gather_facts: false
+  roles:
+    - role: mysql
+    - role: mongo
+    - { role: leptonica, leptonica_version: '1.71' }
+    - role: tesseract
+    - role: imagemagick

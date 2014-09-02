@@ -1,0 +1,4 @@
+- name: Install percona mysql server
+  apt: name='percona-server-server' state=present
+  notify:
+    - restart mysql

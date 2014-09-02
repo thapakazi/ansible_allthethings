@@ -1,0 +1,26 @@
+---
+# dependencies:
+#   - role: leptonica
+
+- name: Cloning tesseract-ocr repo...so hang on my fren
+  git: repo=https://code.google.com/p/tesseract-ocr/ dest=/tmp/tesseract-ocr
+
+- name: Installing tessearct dependencies
+  apt: name={{item}} state=present update_cache=yes
+  with_items:
+    - autoconf
+    - automake
+    - libtool
+    - libpng12-dev
+    - libjpeg62-dev
+    - libtiff4-dev
+    - zlib1g-dev
+
+- name: Install tesseract-ocr
+  command: chdir=/tmp/tesseract-ocr {{item}}
+  with_items:
+    - ./autogen.sh
+    - ./configure
+    - make
+    - make install
+    - ldconfig

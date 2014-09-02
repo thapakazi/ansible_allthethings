@@ -1,0 +1,15 @@
+    - name: Download leptonica {{ leptonica_version }}
+      get_url: url=http://www.leptonica.com/source/leptonica-{{leptonica_version}}.tar.gz dest=/tmp
+
+    - name: Untar downloaded leptonica
+      command: chdir=/tmp creates=leptonica-{{leptonica_version}} tar -xzf leptonica-{{leptonica_version}}.tar.gz
+
+    - name: Install leptonica
+      command: chdir=/tmp/leptonica-{{leptonica_version}} {{item}}
+      with_items:
+        - ./configure
+        - make
+        - make install
+
+    - name: Check the leptonica installation
+      command: ls /usr/local/include/leptonica
