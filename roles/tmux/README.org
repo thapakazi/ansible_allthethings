@@ -1,0 +1,10 @@
+#+TITLE: Sick of old tmux version on ubuntu
+#+DATE: Thursday, Jan 28 2016
+#+DESCRIPTION: quick fix with basic configs
+
+
+** Motivation
+This role is created to mass pollute all the server with my tmux.conf
+and latest greated ppa tmux build.
+
+PS. Some things are not tested yet. :(

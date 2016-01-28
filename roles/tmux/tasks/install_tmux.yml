@@ -1,0 +1,28 @@
+---
+- name: Add ppa repo first
+  apt_repository:
+    repo: 'ppa:pi-rho/dev'
+
+- name: get updates
+  apt:
+    update_cache: yes
+
+- name: remove tmux; assuming old version exists
+  apt:
+    name: tmux
+    state: absent
+  tags:
+    - remove_tmux
+
+- name: install tmux
+  apt:
+    name: tmux
+    state: present
+  tags:
+    - install_tmux
+
+- name: populating new config file
+  copy:
+    src: tmux.conf
+    dest: /etc/tmux.conf
+    backup: yes
