@@ -1,9 +1,10 @@
 - hosts: all
   sudo: yes
+  user: ubuntu
   gather_facts: false
   roles:
     - role: mysql
     - role: mongo
     - { role: leptonica, leptonica_version: '1.71' }
     - role: tesseract
-    - role: imagemagick
+    - {role: tmux, tags: [tmux]}
